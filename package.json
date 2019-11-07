@@ -73,6 +73,7 @@
 		]
 	},
 	"dependencies": {
-		"classnames": "2.2.6"
+		"classnames": "2.2.6",
+		"popper.js": "1.16.0"
 	}
 }
