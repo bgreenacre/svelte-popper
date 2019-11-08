@@ -1,32 +1,28 @@
-<div bind:this={arrowRef}
+<div {...props}
+  bind:this={arrowRef}
   class={classes}
   data-placement={placement}
-  style={stringifyStyles(arrowStyles)}
+  {style}
   />
 
 <script>
+  import { exclude } from './utils';
   import classnames from 'classnames';
-  import { stringifyStyles } from './utils';
 
   export let className = undefined;
   export let placement = 'bottom';
   export let arrowRef = undefined;
-  export let borderColor = '#232323';
-  export let backgroundColor = '#fff';
-  export let style = undefined;
+  export let style = '';
 
+  let props;
   let classes;
-  let arrowStyles = {
-    ...style,
-    '--svlt-popper-arrow-border-color': borderColor,
-    '--svlt-popper-arrow-background-color': backgroundColor,
-  };
 
   if ([ 'top', 'bottom', 'left', 'right' ].indexOf(placement) === -1) {
     throw new Error(`Invalid value "${placement}" for placement. Should be one of "top", "bottom", "left" or "right".`);
   }
 
   $: classes = classnames(className, 'svlt-popper-arrow');
+  $: props = exclude($$props, [ 'className', 'placement', 'arrowRef', 'style' ]);
 </script>
 <style>
   .svlt-popper-arrow {

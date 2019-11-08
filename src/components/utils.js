@@ -3,11 +3,11 @@ export function exclude(source, keys) {
     .reduce((filtered, name) => {
       const cashIndex = name.indexOf('$');
 
-      if (keys.indexOf(name) === -1) {
-        filtered[name] = source[name];
+      if ((cashIndex !== -1 && keys.indexOf(name.substring(0, cashIndex + 1)) !== -1) || keys.indexOf(name) !== -1) {
+        return filtered;
       }
 
-      return filtered;
+      return { ...filtered, [name]: source[name] };
     }, {});
 }
 

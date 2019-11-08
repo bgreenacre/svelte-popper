@@ -1,5 +1,5 @@
 <div bind:this={contentRef}
-  class="svlt-popper"
+  class={classes}
   data-placement={placement}
   {...exclude($$props, [
     'placement',
@@ -22,11 +22,13 @@
 </div>
 
 <script>
+  import classnames from 'classnames';
   import PopperJS from 'popper.js';
   import { onMount } from 'svelte';
   import { exclude } from './utils';
   import Arrow from './Arrow.svelte';
 
+  export let className = undefined;
   export let placement = 'bottom';
   export let eventsEnabled = true;
   export let positionFixed = false;
@@ -72,6 +74,8 @@
 
     return () => destroyPopperInstance();
   });
+
+  $: classes = classnames(className, 'svlt-popper');
 </script>
 <style>
   .svlt-popper {
