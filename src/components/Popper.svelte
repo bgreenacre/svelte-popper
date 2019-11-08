@@ -1,32 +1,15 @@
-<div bind:this={contentRef}
-  class={classes}
-  data-placement={placement}
-  {...exclude($$props, [
-    'placement',
-    'eventsEnabled',
-    'positionFixed',
-    'modifiers',
-    'children',
-    'targetRef',
-    'arrowRef',
-    'borderColor',
-    'backgroundColor'
-  ])}
-  >
+<div {...props} bind:this={contentRef} class={classes} data-placement={placement}>
   {#if children}
     {children}
   {:else}
     <slot />
   {/if}
-  <slot name="arrow"><Arrow bind:arrowRef {placement} bind:borderColor bind:backgroundColor /></slot>
 </div>
-
 <script>
   import classnames from 'classnames';
   import PopperJS from 'popper.js';
   import { onMount } from 'svelte';
   import { exclude } from './utils';
-  import Arrow from './Arrow.svelte';
 
   export let className = undefined;
   export let placement = 'bottom';
@@ -41,6 +24,8 @@
 
   let contentRef;
   let popper;
+  let classes;
+  let props;
 
   const getOptions = () => ({
     placement,
@@ -75,31 +60,20 @@
     return () => destroyPopperInstance();
   });
 
+  $: if ( ! targetRef) {
+    throw new Error('A valid target reference must be passed to Popper component');
+  }
+
   $: classes = classnames(className, 'svlt-popper');
+  $: props = exclude($$props, [
+      'placement',
+      'eventsEnabled',
+      'positionFixed',
+      'modifiers',
+      'children',
+      'targetRef',
+      'arrowRef',
+      'borderColor',
+      'backgroundColor'
+    ]);
 </script>
-<style>
-  .svlt-popper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-    background-color: white;
-    background-clip: padding-box;
-  }
-
-  .svlt-popper[data-placement*='bottom'] {
-    margin-top: 0.5rem;
-  }
-
-  .svlt-popper[data-placement*='top'] {
-    margin-bottom: 0.5rem;
-  }
-
-  .svlt-popper[data-placement*='right'] {
-    margin-left: 0.5rem;
-  }
-
-  .svlt-popper[data-placement*='left'] {
-    margin-right: 0.5rem;
-  }
-</style>
