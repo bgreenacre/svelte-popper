@@ -10,9 +10,3 @@ export function exclude(source, keys) {
       return { ...filtered, [name]: source[name] };
     }, {});
 }
-
-export function stringifyStyles(styles = {}) {
-  return Object.getOwnPropertyNames(styles)
-    .reduce((compiled, name) => ([ ...compiled, `${name}: ${styles[name]}` ]), [])
-    .join('; ');
-}
