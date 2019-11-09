@@ -7,6 +7,9 @@
 		"type": "git",
 		"url": "git@github.com:bgreenacre/svelte-popper.git"
 	},
+	"bugs": {
+		"url": "https://github.com/bgreenacre/svelte-popper/issues"
+	},
 	"svelte": "src/components/components.module.js",
 	"module": "dist/index.min.mjs",
 	"main": "dist/index.min.js",
