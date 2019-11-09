@@ -19,8 +19,6 @@
   export let children = undefined;
   export let targetRef = undefined;
   export let arrowRef = undefined;
-  export let borderColor = undefined;
-  export let backgroundColor = undefined;
 
   let contentRef;
   let popper;
@@ -76,8 +74,6 @@
       'children',
       'targetRef',
       'arrowRef',
-      'borderColor',
-      'backgroundColor',
       'className',
     ]);
 
