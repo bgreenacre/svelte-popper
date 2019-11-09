@@ -1,4 +1,4 @@
-<div {...props} bind:this={contentRef} class={classes} data-placement={placement}>
+<div {...props} bind:this={contentRef} class="{classes}" data-placement={placement}>
   {#if children}
     {children}
   {:else}
@@ -45,7 +45,7 @@
     if ( ! popper) return;
 
     popper.destroy();
-    popper = null;
+    popper = undefined;
   };
 
   const updatePopperInstance = () => {
@@ -68,7 +68,6 @@
     throw new Error(`Invalid placement sent: '${placement}' is not one of ${popper.placements.join(', ')}.`);
   }
 
-  $: classes = classnames(className, 'svlt-popper');
   $: props = exclude($$props, [
       'placement',
       'eventsEnabled',
@@ -78,6 +77,9 @@
       'targetRef',
       'arrowRef',
       'borderColor',
-      'backgroundColor'
+      'backgroundColor',
+      'className',
     ]);
+
+  $: classes = classnames(className, 'svlt-popper');
 </script>

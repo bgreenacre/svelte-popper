@@ -11,4 +11,41 @@ describe('Popper', () => {
     expect(container).toMatchSnapshot();
   });
 
+  test('should render with expected content', () => {
+    const targetRef = document.createElement('div');
+    const { container } = render(Popper, { props: { targetRef, children: 'Hello world!' }});
+    const popper = container.querySelector('.svlt-popper');
+
+    expect(popper.innerHTML.trim()).toBe('Hello world!');
+  });
+
+  test('should render with custom class name', () => {
+    const targetRef = document.createElement('div');
+    const { container } = render(Popper, { props: { targetRef, className: 'custom-class' }});
+    const popper = container.querySelector('.svlt-popper');
+
+    expect(popper.className).toContain('custom-class');
+  });
+
+  test('should throw exception when no targetRef given', () => {
+    expect(() => {
+      render(Popper);
+    }).toThrow();
+  });
+
+  test('should throw exception when invalid placement given', () => {
+    expect(() => {
+      render(Popper, { props: { placement: 'not valid' }});
+    }).toThrow();
+  });
+
+  test('should destroy popper instance on unmount', () => {
+    const targetRef = document.createElement('div');
+    const wrapper = render(Popper, { props: { targetRef }});
+    const { popper } = wrapper.component.$$.ctx;
+    popper.destroy = jest.fn();
+
+    wrapper.unmount();
+    expect(popper.destroy).toHaveBeenCalled();
+  });
 });
