@@ -1,7 +1,8 @@
 {
-	"name": "TODO",
-	"description": "TODO",
-	"license": "TODO",
+	"name": "svelte-popper",
+	"description": "This is a simple svelte component that is a wrapper for popper.js",
+	"author": "Brian Greenacre <bgreenacre42@gmail.com>",
+	"license": "MIT",
 	"repository": "TODO",
 	"svelte": "src/components/components.module.js",
 	"module": "dist/index.min.mjs",
