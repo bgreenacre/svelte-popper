@@ -3,7 +3,10 @@
 	"description": "This is a simple svelte component that is a wrapper for popper.js",
 	"author": "Brian Greenacre <bgreenacre42@gmail.com>",
 	"license": "MIT",
-	"repository": "TODO",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:bgreenacre/svelte-popper.git"
+	},
 	"svelte": "src/components/components.module.js",
 	"module": "dist/index.min.mjs",
 	"main": "dist/index.min.js",
