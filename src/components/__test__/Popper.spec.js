@@ -6,9 +6,9 @@ beforeEach(cleanup);
 describe('Popper', () => {
   test('should render a popper with expected markup', () => {
     const targetRef = document.createElement('div');
-    const wrapper = render(Popper, { props: { targetRef }});
+    const { container } = render(Popper, { props: { targetRef }});
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
 });

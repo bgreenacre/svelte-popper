@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popper should render a popper with expected markup 1`] = `
+<body>
+  <div>
+    <div
+      class="svlt-popper"
+      data-placement="bottom"
+    />
+  </div>
+</body>
+`;
