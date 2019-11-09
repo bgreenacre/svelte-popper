@@ -64,6 +64,10 @@
     throw new Error('A valid target reference must be passed to Popper component');
   }
 
+  $: if (popper && popper.placements.indexOf(placement) === -1) {
+    throw new Error(`Invalid placement sent: '${placement}' is not one of ${popper.placements.join(', ')}.`);
+  }
+
   $: classes = classnames(className, 'svlt-popper');
   $: props = exclude($$props, [
       'placement',
