@@ -1,9 +1,7 @@
 export function exclude(source, keys) {
   return Object.getOwnPropertyNames(source)
     .reduce((filtered, name) => {
-      const cashIndex = name.indexOf('$');
-
-      if ((cashIndex !== -1 && keys.indexOf(name.substring(0, cashIndex + 1)) !== -1) || keys.indexOf(name) !== -1) {
+      if (keys.indexOf(name) !== -1) {
         return filtered;
       }
 
