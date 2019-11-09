@@ -1,4 +1,4 @@
-<div {...props} bind:this={contentRef} class="{classes}" data-placement={placement}>
+<div {...props} bind:this={contentRef} class={classes} data-placement={placement}>
   {#if children}
     {children}
   {:else}
