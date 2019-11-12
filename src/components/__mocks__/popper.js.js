@@ -1,13 +1,17 @@
 import PopperJs from 'popper.js';
 
 export default class Popper {
-  constructor() {
-    this.placements = PopperJs.placements;
+  static placements = PopperJs.placements;
 
+  state = {
+    isDestroyed: false,
+  };
+
+  constructor() {
     return {
-      destroy: () => {},
-      scheduleUpdate: () => {},
-      placements: PopperJs.placements,
+      state: this.state,
+      destroy: () => (this.state.isDestroyed = true),
+      scheduleUpdate: () => {}
     };
   }
 }

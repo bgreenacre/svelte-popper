@@ -8,7 +8,7 @@
 <script>
   import classnames from 'classnames';
   import PopperJS from 'popper.js';
-  import { onMount, tick } from 'svelte';
+  import { onMount } from 'svelte';
   import { exclude } from './utils';
 
   export let className = undefined;
@@ -24,7 +24,6 @@
   let popper;
   let classes;
   let props;
-  let mounted = false;
 
   const getOptions = () => ({
     placement,
@@ -53,16 +52,13 @@
     popper = new PopperJS(targetRef, contentRef, getOptions());
   };
 
-  onMount(async () => {
-    await tick();
-
-    mounted = true;
+  onMount(() => {
     updatePopperInstance();
 
     return () => destroyPopperInstance();
   });
 
-  $: if (mounted && ! targetRef) {
+  $: if (! targetRef) {
     throw new Error('A valid target reference must be passed to Popper component');
   }
 

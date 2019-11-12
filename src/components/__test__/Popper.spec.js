@@ -34,8 +34,10 @@ describe('Popper', () => {
   });
 
   test('should throw exception when invalid placement given', () => {
+    const targetRef = document.createElement('div');
+
     expect(() => {
-      render(Popper, { props: { placement: 'not valid' }});
+      render(Popper, { props: { targetRef, placement: 'not valid' }});
     }).toThrow();
   });
 
@@ -43,9 +45,8 @@ describe('Popper', () => {
     const targetRef = document.createElement('div');
     const wrapper = render(Popper, { props: { targetRef }});
     const { popper } = wrapper.component.$$.ctx;
-    popper.destroy = jest.fn();
 
     wrapper.unmount();
-    expect(popper.destroy).toHaveBeenCalled();
+    expect(popper.state.isDestroyed).toBe(true);
   });
 });
