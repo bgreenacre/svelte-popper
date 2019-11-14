@@ -78,4 +78,12 @@
 
   $: classes = classnames(className, 'svlt-popper');
   $: arrowRef, targetRef, positionFixed, modifiers, updatePopperInstance();
+  $: if (popper) {
+    if (eventsEnabled) {
+      popper.enableEventListeners();
+    }
+    else {
+      popper.disableEventListeners();
+    }
+  }
 </script>

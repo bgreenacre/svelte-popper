@@ -11,7 +11,9 @@ export default class Popper {
     return {
       state: this.state,
       destroy: () => (this.state.isDestroyed = true),
-      scheduleUpdate: () => {}
+      scheduleUpdate: () => {},
+      disableEventListeners: () => {},
+      enableEventListeners: () => {},
     };
   }
 }
