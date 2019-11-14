@@ -75,6 +75,7 @@
       'targetRef',
       'arrowRef',
       'className',
+      'popper',
     ]);
 
   $: classes = classnames(className, 'svlt-popper');
