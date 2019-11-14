@@ -19,9 +19,9 @@
   export let children = undefined;
   export let targetRef = undefined;
   export let arrowRef = undefined;
+  export let popper = undefined;
 
   let contentRef;
-  let popper;
   let classes;
   let props;
 
@@ -63,7 +63,7 @@
   }
 
   $: if (PopperJS.placements.indexOf(placement) === -1) {
-    throw new Error(`Invalid placement sent: '${placement}' is not one of ${popper.placements.join(', ')}.`);
+    throw new Error(`Invalid placement sent: '${placement}' is not one of ${PopperJS.placements.join(', ')}.`);
   }
 
   $: props = exclude($$props, [

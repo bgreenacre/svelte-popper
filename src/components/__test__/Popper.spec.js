@@ -4,13 +4,6 @@ import { render, cleanup } from '@testing-library/svelte';
 beforeEach(cleanup);
 
 describe('Popper', () => {
-  test('should render a popper with expected markup', () => {
-    const targetRef = document.createElement('div');
-    const { container } = render(Popper, { props: { targetRef }});
-
-    expect(container).toMatchSnapshot();
-  });
-
   test('should render with expected content', () => {
     const targetRef = document.createElement('div');
     const { container } = render(Popper, { props: { targetRef, children: 'Hello world!' }});
