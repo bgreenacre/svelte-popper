@@ -1,5 +1,5 @@
 import Popper from '../Popper.svelte';
-import { render, cleanup } from '@testing-library/svelte';
+import { render, cleanup, act } from '@testing-library/svelte';
 
 beforeEach(cleanup);
 
@@ -34,12 +34,14 @@ describe('Popper', () => {
     }).toThrow();
   });
 
-  test('should destroy popper instance on unmount', () => {
+  test('should destroy popper instance on unmount', async () => {
     const targetRef = document.createElement('div');
-    const wrapper = render(Popper, { props: { targetRef }});
+    let wrapper;
+
+    await act(() => wrapper = render(Popper, { props: { targetRef }}));
     const { popper } = wrapper.component.$$.ctx;
 
-    wrapper.unmount();
+    await act(() => wrapper.unmount());
     expect(popper.state.isDestroyed).toBe(true);
   });
 });

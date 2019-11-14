@@ -8,7 +8,7 @@
 <script>
   import classnames from 'classnames';
   import PopperJS from 'popper.js';
-  import { onMount } from 'svelte';
+  import { onDestroy, tick } from 'svelte';
   import { exclude } from './utils';
 
   export let className = undefined;
@@ -46,17 +46,15 @@
     popper = undefined;
   };
 
-  const updatePopperInstance = () => {
+  const updatePopperInstance = async () => {
+    await tick();
+
     destroyPopperInstance();
 
     popper = new PopperJS(targetRef, contentRef, getOptions());
   };
 
-  onMount(() => {
-    updatePopperInstance();
-
-    return () => destroyPopperInstance();
-  });
+  onDestroy(() => destroyPopperInstance());
 
   $: if (! targetRef) {
     throw new Error('A valid target reference must be passed to Popper component');
@@ -79,4 +77,5 @@
     ]);
 
   $: classes = classnames(className, 'svlt-popper');
+  $: arrowRef, targetRef, positionFixed, modifiers, updatePopperInstance();
 </script>
