@@ -24,6 +24,16 @@
   let contentRef;
   let classes;
   let props;
+  let statePlacement = placement;
+
+  const updateStateModifier = {
+    enabled: true,
+    order: 900,
+    fn: (data) => {
+      statePlacement = data.placement;
+      return data;
+    },
+  };
 
   const getOptions = () => ({
     placement,
@@ -36,6 +46,7 @@
         enabled: !! arrowRef,
         element: arrowRef,
       },
+      updateStateModifier,
     },
   });
 
@@ -77,13 +88,17 @@
     ]);
 
   $: classes = classnames(className, 'svlt-popper');
-  $: arrowRef, targetRef, positionFixed, modifiers, updatePopperInstance();
+  $: arrowRef, targetRef, placement, positionFixed, modifiers, updatePopperInstance();
   $: if (popper) {
     if (eventsEnabled) {
       popper.enableEventListeners();
     }
     else {
       popper.disableEventListeners();
+    }
+
+    if (statePlacement) {
+      popper.scheduleUpdate();
     }
   }
 </script>
