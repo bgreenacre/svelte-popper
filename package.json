@@ -3,6 +3,7 @@
 	"description": "This is a simple svelte component that is a wrapper for popper.js",
 	"author": "Brian Greenacre <bgreenacre42@gmail.com>",
 	"license": "MIT",
+	"version": "0.1.0",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:bgreenacre/svelte-popper.git"
