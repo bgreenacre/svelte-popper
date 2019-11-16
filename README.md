@@ -1,5 +1,8 @@
 # Svelte Popper
 
+[![Build Status](https://travis-ci.org/bgreenacre/svelte-popper.svg?branch=master)](https://travis-ci.org/bgreenacre/svelte-popper)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 A simple wrapper component for the popular library [popper.js](https://popper.js.org/).
 
 ## Table of Contents
