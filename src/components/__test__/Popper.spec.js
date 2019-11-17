@@ -44,4 +44,20 @@ describe('Popper', () => {
     await act(() => wrapper.unmount());
     expect(popper.state.isDestroyed).toBe(true);
   });
+
+  test('should update popper object when events are toggled', async () => {
+    const targetRef = document.createElement('div');
+    let wrapper;
+
+    await act(() => wrapper = render(Popper, { props: { targetRef }}));
+
+    const { component } = wrapper;
+    const { popper } = wrapper.component.$$.ctx;
+
+    expect(popper).toBeDefined();
+
+    component.$set({ eventsEnabled: false });
+
+    expect(wrapper.component.$$.ctx.popper).toBe(popper);
+  });
 });
