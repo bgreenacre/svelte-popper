@@ -20,6 +20,16 @@ describe('Popper', () => {
     expect(popper.className).toContain('custom-class');
   });
 
+  test('should instantiate new Popper.js instance on first update', async () => {
+    const targetRef = document.createElement('div');
+    let wrapper;
+
+    await act(() => wrapper = render(Popper, { props: { targetRef }}));
+    const { popper } = wrapper.component.$$.ctx;
+
+    expect(popper).toBeDefined();
+  });
+
   test('should throw exception when no targetRef given', () => {
     expect(() => {
       render(Popper);
