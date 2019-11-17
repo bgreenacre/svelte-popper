@@ -20,6 +20,7 @@
   export let targetRef = undefined;
   export let arrowRef = undefined;
   export let popper = undefined;
+  export let outOfBoundaries = undefined;
 
   let contentRef;
   let classes;
@@ -31,6 +32,8 @@
     order: 900,
     fn: (data) => {
       statePlacement = data.placement;
+      outOfBoundaries = data.hide;
+
       return data;
     },
   };
@@ -65,6 +68,8 @@
     popper = new PopperJS(targetRef, contentRef, getOptions());
   };
 
+  export const scheduleUpdate = () => popper && popper.scheduleUpdate();
+
   onDestroy(() => destroyPopperInstance());
 
   $: if (! targetRef) {
@@ -98,7 +103,7 @@
     }
 
     if (statePlacement) {
-      popper.scheduleUpdate();
+      scheduleUpdate();
     }
   }
 </script>
