@@ -9,7 +9,7 @@
   import classnames from 'classnames';
   import PopperJS from 'popper.js';
   import { onDestroy, tick } from 'svelte';
-  import { exclude } from './utils';
+  import exclude from './exclude.js';
 
   export let className = undefined;
   export let placement = 'bottom';
@@ -19,11 +19,11 @@
   export let children = undefined;
   export let targetRef = undefined;
   export let arrowRef = undefined;
-  export let popper = undefined;
   export let outOfBoundaries = undefined;
 
-  let contentRef;
   let classes;
+  let contentRef;
+  let popper = undefined;
   let props;
   let statePlacement = placement;
 
