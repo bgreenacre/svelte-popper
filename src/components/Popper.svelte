@@ -23,7 +23,7 @@
 
   let classes;
   let contentRef;
-  let popper = undefined;
+  let popper;
   let props;
   let statePlacement = placement;
 
