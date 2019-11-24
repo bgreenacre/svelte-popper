@@ -6,7 +6,7 @@
 	"version": "0.1.2",
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:bgreenacre/svelte-popper.git"
+		"url": "git+https://github.com/bgreenacre/svelte-popper.git"
 	},
 	"bugs": {
 		"url": "https://github.com/bgreenacre/svelte-popper/issues"

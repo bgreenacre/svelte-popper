@@ -9,7 +9,41 @@ A simple wrapper component for the popular library [popper.js](https://popper.js
 
 ## Table of Contents
 
-1. [Credits & Inspiration](#credits-&-inspiration)
+1. [Install](#install)
+2. [Running Locally](#running-locally)
+3. [Credits & Inspiration](#credits-&-inspiration)
+
+## Install
+
+Via package managers:
+
+```bash
+npm install svelte-popper --save
+# or
+yarn add svelte-popper
+```
+
+## Running Locally
+
+#### clone repo
+
+`git clone git@github.com:bgreenacre/svelte-popper.git`
+
+#### move into folder
+
+`cd ~/svelte-popper`
+
+#### install dependencies
+
+`npm install` or `yarn`
+
+#### run dev mode
+
+`npm run dev` or `yarn dev`
+
+#### open your browser and visit:
+
+`http://localhost:5000/`
 
 ## Credits & Inspiration
 
