@@ -1,4 +1,4 @@
-<div {...props} bind:this={contentRef} class={classes} data-placement={placement}>
+<div {...props} bind:this={contentRef} class={classes} x-placement={placement}>
   {#if children}
     {children}
   {:else}
@@ -73,7 +73,7 @@
   onDestroy(() => destroyPopperInstance());
 
   $: if (! targetRef) {
-    throw new Error('A valid target reference must be passed to Popper component');
+    throw new Error('A valid target reference must be passed to Popper component.');
   }
 
   $: if (PopperJS.placements.indexOf(placement) === -1) {
